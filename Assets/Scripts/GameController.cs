@@ -35,7 +35,7 @@ public class GameController : MonoBehaviour
     private int playerScore;
     public int quizLength = 50;
     private List<GameObject> answerButtonGameObjects = new List<GameObject>();
-    private int j = 0; //initialize quiz count
+    private int j = 0;
 
     void Start()
     {
@@ -67,12 +67,12 @@ public class GameController : MonoBehaviour
         questionDisplayText.text = questionData.questionText;
 
         for (int i = 0; i < questionData.answers.Length; i++)
-        {   //for every AnswerData in current QuestionData, spawn an AnswerButton from the object pool
+        {   
             GameObject answerButtonGameObject = answerButtonObjectPool.GetObject();
             answerButtonGameObjects.Add(answerButtonGameObject);
             answerButtonGameObject.transform.SetParent(answerButtonParent);
 
-            //passing AnswerData to ANswerButton so it knows what text to display and whether it's the correct answer
+           
             AnswerButton answerButton = answerButtonGameObject.GetComponent<AnswerButton>();
             answerButton.GetComponent<Image>().color = new Color32 (255, 255, 255, 50);
             answerButton.Setup(questionData.answers[i]);
